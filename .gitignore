@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# Hugo build cache
+/public/
+/resources/_gen/
+
+# Node dependencies (if used)
+node_modules/
