@@ -1,5 +1,5 @@
 +++
-title = "测试文章"
+title = "第一篇文章"
 date = 2025-01-01T10:00:00+08:00
 draft = false
 description = "快速预览 Blowfish 主题"
@@ -7,10 +7,10 @@ categories = ["笔记"]
 tags = ["hugo", "blowfish"]
 +++
 
-这是使用 Blowfish 主题生成的示例文章。你可以在 `content/posts` 目录下添加更多 Markdown 文件，来丰富你的网站内容。
+你被骗了.mp4
 
-```bash
-hugo new posts/my-new-post.md
-```
-
-保存后重新访问 http://localhost:1313/ 就能看到最新内容。
+<iframe src="//player.bilibili.com/player.html?bvid=BV1GJ411x7h7&page=1"
+  scrolling="no" border="0" frameborder="no"
+  framespacing="0" allowfullscreen="true"
+  width="640" height="360">
+</iframe>
