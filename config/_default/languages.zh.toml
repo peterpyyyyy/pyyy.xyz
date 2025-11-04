@@ -1,0 +1,20 @@
+languageCode = "zh-cn"
+languageName = "简体中文"
+weight = 1
+title = "pyyy.xyz"
+
+[params]
+  displayName = "中文"
+  isoCode = "zh-cn"
+  rtl = false
+  dateFormat = "2006-01-02"
+  description = "pyyy 的个人网站"
+
+[params.author]
+  name = "pyyy"
+  headline = "分享笔记与项目"
+  bio = "记录一路上的所学和想法。"
+  image = "img/blowfish_logo.png"
+  links = [
+    { github = "https://github.com/peterpyyyyy" }
+  ]

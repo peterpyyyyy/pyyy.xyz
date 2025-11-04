@@ -1,0 +1,34 @@
+colorScheme = "blowfish"
+defaultAppearance = "light"
+autoSwitchAppearance = true
+
+enableSearch = true
+enableCodeCopy = true
+
+mainSections = ["posts"]
+
+[header]
+  layout = "fixed"
+
+[homepage]
+  layout = "hero"
+  homepageImage = "img/featured.svg"
+  showRecent = true
+  showRecentItems = 6
+
+[article]
+  showDate = true
+  showAuthor = true
+  showTableOfContents = true
+  showReadingTime = true
+
+[list]
+  showHero = false
+  showBreadcrumbs = false
+  showSummary = true
+  showCards = true
+
+[footer]
+  showMenu = false
+  showScrollToTop = true
+  showAppearanceSwitcher = true
