@@ -1,6 +1,6 @@
 [[main]]
   name = "首页"
-  pageRef = ""
+  pageRef = "/"
   weight = 1
 
 [[main]]
