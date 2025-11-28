@@ -1,7 +1,7 @@
 colorScheme = "blowfish"
 defaultAppearance = "light"
 autoSwitchAppearance = true
-
+copyright = "{ year } @pyyy · <a href=\"https://beian.miit.gov.cn/\" target=\"_blank\" >粤ICP备2025494818号</a>"
 enableSearch = true
 enableCodeCopy = true
 
@@ -13,7 +13,7 @@ mainSections = ["posts"]
 [homepage]
   layout = "hero"
   homepageImage = "img/featured.svg"
-  showRecent = true
+  showRecent = false
   showRecentItems = 6
 
 [article]

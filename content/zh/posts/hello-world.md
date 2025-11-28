@@ -9,7 +9,7 @@ tags = ["hugo", "blowfish"]
 
 你被骗了.mp4
 
-<iframe src="//player.bilibili.com/player.html?bvid=BV1GJ411x7h7&page=1"
+<iframe src="https://player.bilibili.com/player.html?bvid=BV1GJ411x7h7&page=1"
   scrolling="no" border="0" frameborder="no"
   framespacing="0" allowfullscreen="true"
   width="640" height="360">
