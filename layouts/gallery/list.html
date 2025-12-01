@@ -1,0 +1,36 @@
+{{ define "main" }}
+  <section class="max-w-5xl mx-auto px-4 py-12">
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold mb-3">{{ .Title }}</h1>
+      {{ with .Params.description }}
+        <p class="text-lg text-neutral-600 dark:text-neutral-300">{{ . }}</p>
+      {{ end }}
+    </div>
+
+    {{ $photos := .Params.photos }}
+    <div class="mt-10 space-y-12">
+      {{ range $photos }}
+        {{ $src := .src }}
+        {{ if and (not (strings.HasPrefix $src "http://")) (not (strings.HasPrefix $src "https://")) }}
+          {{ $src = relURL $src }}
+        {{ end }}
+        <figure class="bg-neutral-50 dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-lg">
+          <div class="bg-neutral-200/40 dark:bg-neutral-800/60 overflow-hidden" style="aspect-ratio: 4 / 3;">
+            <img class="w-full h-full object-cover" src="{{ $src }}" alt="{{ .alt | default $.Title }}">
+          </div>
+          <figcaption class="p-5 text-center text-neutral-700 dark:text-neutral-200 text-sm">
+            {{ with .date }}
+              <div class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1">
+                {{ time . | time.Format "2006-01-02" }}
+              </div>
+            {{ end }}
+            {{ with .title }}<div class="text-base font-semibold mb-1">{{ . }}</div>{{ end }}
+            {{ with .caption }}<p>{{ . }}</p>{{ end }}
+          </figcaption>
+        </figure>
+      {{ else }}
+        <p class="text-center text-neutral-600 dark:text-neutral-300 mt-10">还没有添加任何图片，稍后再来看吧。</p>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

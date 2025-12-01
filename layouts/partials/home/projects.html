@@ -1,0 +1,61 @@
+<section id="projects" class="my-10 scroll-mt-24">
+  {{ $lang := .Site.Language.Lang }}
+  {{ $title := "Projects" }}
+  {{ if or (eq $lang "zh") (hasPrefix $lang "zh") }}{{ $title = "项目" }}{{ end }}
+  <h2 class="text-2xl font-bold mb-4">{{ $title }}</h2>
+  {{ $projectsData := index site.Data.projects $lang }}
+  {{ if not $projectsData }}
+    {{ $langShort := index (split $lang "-") 0 }}
+    {{ $projectsData = index site.Data.projects $langShort }}
+  {{ end }}
+  {{ if not $projectsData }}
+    {{ $projectsData = site.Data.projects.zh }}
+  {{ end }}
+  <div class="grid gap-4 md:grid-cols-2">
+    {{ range $project := $projectsData }}
+      <article class="p-4 rounded-xl border bg-white/60 dark:bg-neutral-900/60 flex flex-col gap-4 md:flex-row md:items-start">
+        {{ with $project.image }}
+          {{ $imgURL := . }}
+          {{ if not (or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") (strings.HasPrefix . "/")) }}
+            {{ with resources.Get . }}
+              {{ $imgURL = .RelPermalink }}
+            {{ end }}
+          {{ end }}
+          {{ with $imgURL }}
+            <div class="flex-none order-1 md:order-2 w-52 h-36 md:w-60 md:h-44 self-start">
+              <div class="overflow-hidden rounded-lg border border-neutral-200/70 dark:border-neutral-800/70">
+                <img
+                  class="w-full h-full object-cover"
+                  src="{{ . | safeURL }}"
+                  alt="{{ $project.name }}"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </div>
+            </div>
+          {{ end }}
+        {{ end }}
+        <div class="flex-1 min-w-0 order-2 md:order-1">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xl font-semibold">{{ $project.name }}</h3>
+            {{ with $project.link }}
+              <a class="text-primary-600 hover:underline" href="{{ . }}" target="_blank" rel="noopener">↗</a>
+            {{ end }}
+          </div>
+          {{ with $project.desc }}
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+              {{ . | replaceRE "(\\r\\n|\\r|\\n)" "<br>" | safeHTML }}
+            </p>
+          {{ end }}
+          {{ with $project.tags }}
+            <div class="mt-2 flex flex-wrap gap-2">
+              {{ range . }}
+                <span class="text-xs px-2 py-1 rounded-full bg-primary-100 text-primary-900 dark:bg-neutral-800 dark:text-neutral-100">{{ . }}</span>
+              {{ end }}
+            </div>
+          {{ end }}
+        </div>
+      </article>
+    {{ end }}
+  </div>
+</section>

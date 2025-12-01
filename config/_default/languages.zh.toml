@@ -1,7 +1,7 @@
 languageCode = "zh-cn"
 languageName = "简体中文"
 weight = 1
-title = "pyyy.xyz"
+#title = "pyyy.xyz"
 
 [params]
   displayName = "中文"
@@ -12,9 +12,12 @@ title = "pyyy.xyz"
 
 [params.author]
   name = "pyyy"
-  headline = "分享笔记与项目"
-  bio = "记录一路上的所学和想法。"
-  image = "img/blowfish_logo.png"
+  headline = """👨🏻‍🎓@<a href="https://www.cqu.edu.cn" target="_blank" rel="noopener">重庆大学</a><br>👨🏻‍🔧@<a href="https://mp.weixin.qq.com/s/B3HUb56MBZ4KYMGRqH00rQ" target="_blank" rel="noopener">FRC8214</a><br>📷🚴🤖✈️"""
+
+  image = "img/me.png"
   links = [
-    { github = "https://github.com/peterpyyyyy" }
+    { github = "https://github.com/peterpyyyyy" },
+    { bilibili = "https://space.bilibili.com/357505609?spm_id_from=333.1007.0.0"},
+    { strava = "https://www.strava.com/athletes/178275168" },
+     { email = "mailto:superpyyy@qq.com" },
   ]

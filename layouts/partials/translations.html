@@ -1,0 +1,15 @@
+{{/* Toggle language: show single link to the first available translation. */}}
+{{ if .IsTranslated }}
+  {{ $translations := .Translations }}
+  {{ if gt (len $translations) 0 }}
+    {{ $target := index $translations 0 }}
+    <a href="{{ $target.RelPermalink }}" class="flex items-center">
+      <span class="me-1">
+        {{ partial "icon.html" "language" }}
+      </span>
+      <span class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400">
+        {{ $target.Language.Params.displayName | emojify }}
+      </span>
+    </a>
+  {{ end }}
+{{ end }}

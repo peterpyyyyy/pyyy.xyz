@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="60%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="foam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#c7d2fe" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sea)"/>
+  <path d="M0 460 Q160 410 320 430 T640 430 T960 410 Q1080 400 1200 430 L1200 800 L0 800 Z" fill="#0ea5e9" opacity="0.4"/>
+  <path d="M0 520 Q180 470 360 500 T720 500 T1080 470 Q1180 460 1200 500 L1200 800 L0 800 Z" fill="#0ea5e9" opacity="0.55"/>
+  <path d="M0 580 Q200 540 400 560 T800 560 T1200 530 L1200 800 L0 800 Z" fill="url(#foam)"/>
+  <circle cx="920" cy="200" r="120" fill="#fef3c7" opacity="0.9"/>
+  <path d="M880 200 q60 -40 120 0" stroke="#fde68a" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="250" cy="220" r="14" fill="#a5b4fc" opacity="0.9"/>
+  <circle cx="300" cy="190" r="10" fill="#c084fc" opacity="0.8"/>
+  <circle cx="350" cy="240" r="8" fill="#22d3ee" opacity="0.8"/>
+</svg>

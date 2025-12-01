@@ -1,0 +1,9 @@
+[[main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 1
+
+[[main]]
+  name = "Gallery"
+  url = "/gallery/"
+  weight = 2

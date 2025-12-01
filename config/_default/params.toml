@@ -1,4 +1,4 @@
-colorScheme = "blowfish"
+colorScheme = "Marvel"
 defaultAppearance = "light"
 autoSwitchAppearance = true
 copyright = "{ year } @pyyy · <a href=\"https://beian.miit.gov.cn/\" target=\"_blank\" >粤ICP备2025494818号</a>"
@@ -11,7 +11,7 @@ mainSections = ["posts"]
   layout = "fixed"
 
 [homepage]
-  layout = "hero"
+  layout = "myhome"
   homepageImage = "img/featured.svg"
   showRecent = false
   showRecentItems = 6
@@ -22,6 +22,10 @@ mainSections = ["posts"]
   showTableOfContents = true
   showReadingTime = true
 
+[Author]
+  name = "pyyy"
+  image = "img/me.png"
+  
 [list]
   showHero = false
   showBreadcrumbs = false
@@ -29,6 +33,6 @@ mainSections = ["posts"]
   showCards = true
 
 [footer]
-  showMenu = false
+  showMenu = true
   showScrollToTop = true
   showAppearanceSwitcher = true

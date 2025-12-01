@@ -1,0 +1,31 @@
+- name: FRC8214 2025赛季机器人
+  desc: |
+    👨🏻‍🔧 主导机械设计研发
+    🏆 三亚季后赛冠军
+  link: https://www.bilibili.com/video/BV18U8FzyEDc/?vd_source=aa1efb57a7a2cc7feb3c90c2e07384d9
+  #image: img/projects/8214_25.png
+  tags: [FRC, 机械]
+- name: NICE
+  desc: 🤫🤫🤫
+  #link: https://github.com/yourname/tools
+  tags: [FRC, 产品]
+- name: "FeatureScripts: NI Tube Convertor"
+  desc: 在 Julia 的基础上添加了公制的支持，并支持了 swerve mode
+  link: https://cad.onshape.com/documents/f7b27dd411ba4731c0f6db7a/w/8d73d146e119ededb0c7ad55/e/fb97c9cd1aad52d824674cf4?renderMode=0&uiState=692d9f5193bce92ecb3239a0
+  tags: [FRC, Onshape, FeatureScript]
+- name: "FeatureScripts: Cycodial Driver generator"
+  desc: 一键生成参数化摆线轮草图，支持修型
+  link: https://cad.onshape.com/documents/67445ac5dc80b7b3efd03478/w/58539aab3a3e7d8ba1646329/e/93cfbee11a5ef8c60dd6aa9f?renderMode=0&uiState=692da03d93bce92ecb3239b7
+  tags: [Onshape, FeatureScript]
+- name: 拓竹 MakerWorld
+  desc: 原创 3D 打印模型累计获得超过 600 次下载量、400 次打印量
+  link: https://makerworld.com.cn/zh/@pyyyy/upload
+  tags: [3D打印, 设计]
+- name: SRTP 科研训练项目
+  desc: 主导项目《基于数字孪生技术模拟切削机床在切削过程中的误差行为》研究
+  #link: /posts/
+  tags: [C#, Unity, 数字孪生]
+- name: 我的网站！
+  desc: 携手 ChatGPT 荣誉呈现
+  link: http://www.pyyy.xyz
+  tags: [HTML, ChatGPT]
