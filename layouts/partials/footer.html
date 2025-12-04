@@ -36,7 +36,7 @@
 
   <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
     <div class="flex flex-col gap-1">
-      {{/* Copyright */}}
+      {{/* Copyright + registration info */}}
       {{ if .Site.Params.footer.showCopyright | default true }}
         <p class="text-sm text-neutral-500 dark:text-neutral-400">
           {{- with replace .Site.Params.copyright "{ year }" now.Year }}
@@ -46,15 +46,27 @@
             {{ now.Format "2006" }}
             {{ .Site.Params.Author.name | markdownify }}
           {{- end }}
-          {{ with .Site.Params.records.publicSecurity }}
-            · <a class="no-underline text-inherit hover:no-underline"
-              href="{{ .url | default `#` }}" target="_blank" rel="noreferrer noopener">
-              {{ with .icon }}
-                <img src="{{ . | relURL }}" alt="" class="inline-block align-middle nozoom" style="height:0.9em;width:0.9em;">
-              {{ end }}{{ .number }}
-            </a>
-          {{ end }}
         </p>
+        {{/* ICP + Public Security on the same line */}}
+        {{ if or .Site.Params.records.icp .Site.Params.records.publicSecurity }}
+          <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            {{ with .Site.Params.records.icp }}
+              <a class="no-underline text-inherit hover:underline hover:decoration-primary-500"
+                href="{{ .url | default `#` }}" target="_blank" rel="noreferrer noopener">
+                {{ .number }}
+              </a>
+            {{ end }}
+            {{ if and .Site.Params.records.icp .Site.Params.records.publicSecurity }}<span class="mx-1"></span>{{ end }}
+            {{ with .Site.Params.records.publicSecurity }}
+              <a class="no-underline text-inherit hover:underline hover:decoration-primary-500"
+                href="{{ .url | default `#` }}" target="_blank" rel="noreferrer noopener">
+                {{ with .icon }}
+                  <img src="{{ . | relURL }}" alt="" class="inline-block align-middle nozoom" style="height:0.9em;width:0.9em;">
+                {{ end }}{{ .number }}
+              </a>
+            {{ end }}
+          </p>
+        {{ end }}
       {{ end }}
     </div>
 

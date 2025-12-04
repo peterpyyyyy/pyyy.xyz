@@ -1,0 +1,12 @@
+/* Fill the safe-area around the fixed header so the blur spans behind the dynamic island/notch */
+.fixed.inset-x-0.z-100 {
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.fixed.inset-x-0.z-100 #menu-blur {
+  left: calc(-1 * env(safe-area-inset-left));
+  right: calc(-1 * env(safe-area-inset-right));
+  width: calc(100% + env(safe-area-inset-left) + env(safe-area-inset-right));
+}
