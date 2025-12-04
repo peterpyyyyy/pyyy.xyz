@@ -11,7 +11,7 @@ weight = 2
 
 [params.author]
   name = "pyyy"
-  headline = """👨🏻‍🎓@<a href="https://www.cqu.edu.cn" target="_blank" rel="noopener">Chongqing University</a><br>👨🏻‍🔧@<a href="https://mp.weixin.qq.com/s/B3HUb56MBZ4KYMGRqH00rQ" target="_blank" rel="noopener">FRC8214</a><br>📷🚴🤖✈️"""
+  headline = """👨🏻‍🎓@<a href="https://www.cqu.edu.cn" target="_blank" rel="noopener">Chongqing University</a><br>👨🏻‍🔧@<a href="https://mp.weixin.qq.com/s/B3HUb56MBZ4KYMGRqH00rQ" target="_blank" rel="noopener">FRC Team 8214</a><br><a>Mechanical Engineering</a><br>📷🚴🤖✈️"""
   image = "img/me.png"
   links = [
     { github = "https://github.com/peterpyyyyy" },

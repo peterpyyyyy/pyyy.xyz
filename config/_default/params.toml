@@ -4,6 +4,12 @@ autoSwitchAppearance = true
 copyright = "{ year } @pyyy · <a href=\"https://beian.miit.gov.cn/\" target=\"_blank\" >粤ICP备2025494818号</a>"
 enableSearch = true
 enableCodeCopy = true
+disableImageZoom = true
+[records]
+  [records.publicSecurity]
+    number = "粤公网安备44010602014311号"
+    url = "https://beian.mps.gov.cn/#/query/webSearch?code=44010602014311"
+    icon = "备案图标.png"
 
 mainSections = ["posts"]
 
