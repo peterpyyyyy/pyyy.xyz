@@ -216,11 +216,17 @@ body:has(.home-hero) {
     var(--portfolio-panel);
 }
 
-.project-card:hover,
 .project-card:focus-within {
-  transform: translateY(-3px);
   border-color: rgba(0, 163, 255, 0.58);
   box-shadow: var(--portfolio-shadow);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 163, 255, 0.58);
+    box-shadow: var(--portfolio-shadow);
+  }
 }
 
 .project-card__media {
@@ -314,19 +320,18 @@ body:has(.home-hero) {
   width: min(100%, 28rem);
 }
 
-.project-card:hover .project-card__image,
-.project-card:focus-within .project-card__image {
-  transform: scale(1.035);
-}
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-card__image {
+    transform: scale(1.035);
+  }
 
-.project-card:hover .project-card__media--logo .project-card__image,
-.project-card:focus-within .project-card__media--logo .project-card__image {
-  transform: scale(1.02);
-}
+  .project-card:hover .project-card__media--logo .project-card__image {
+    transform: scale(1.02);
+  }
 
-.project-card:hover .project-card__media--makerworld .project-card__image,
-.project-card:focus-within .project-card__media--makerworld .project-card__image {
-  transform: scale(1.025);
+  .project-card:hover .project-card__media--makerworld .project-card__image {
+    transform: scale(1.025);
+  }
 }
 
 .project-card__body {
@@ -1141,10 +1146,7 @@ body:has(.home-hero) {
     transition: none !important;
   }
 
-  .project-card:hover,
   .project-card:focus-within,
-  .project-card:hover .project-card__image,
-  .project-card:focus-within .project-card__image,
   .frc-stack:not([open]) .frc-stack__summary:hover,
   .frc-stack__summary:hover .frc-stack__deck-card,
   .frc-stack__summary:focus-visible .frc-stack__deck-card {
