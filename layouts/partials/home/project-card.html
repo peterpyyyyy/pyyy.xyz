@@ -7,6 +7,10 @@
 {{ if or (eq $lang "zh") (hasPrefix $lang "zh") }}{{ $openLabel = "打开" }}{{ end }}
 {{ $isLogo := $project.logo | default false }}
 {{ $logoClass := $project.logoClass | default "" }}
+{{ $projectTitle := $project.name }}
+{{ if eq $variant "frc" }}
+  {{ $projectTitle = replaceRE "^FRC\\s*8214\\s*" "" $projectTitle }}
+{{ end }}
 
 <article class="project-card{{ if eq $variant "frc" }} project-card--frc{{ end }}">
   {{ with $project.image }}
@@ -30,7 +34,7 @@
             src="{{ $fallback.RelPermalink }}"
             width="{{ $fallback.Width }}"
             height="{{ $fallback.Height }}"
-            alt="{{ $project.name }}"
+            alt="{{ $projectTitle }}"
             loading="lazy"
             decoding="async">
         </picture>
@@ -46,7 +50,7 @@
         <img
           class="project-card__image{{ with $logoClass }} project-card__image--{{ . }}{{ end }}"
           src="{{ $img.RelPermalink }}"
-          alt="{{ $project.name }}"
+          alt="{{ $projectTitle }}"
           loading="lazy"
           decoding="async">
       </figure>
@@ -55,7 +59,7 @@
         <img
           class="project-card__image{{ with $logoClass }} project-card__image--{{ . }}{{ end }}"
           src="{{ $imgURL | safeURL }}"
-          alt="{{ $project.name }}"
+          alt="{{ $projectTitle }}"
           loading="lazy"
           decoding="async">
       </figure>
@@ -64,14 +68,14 @@
 
   <div class="project-card__body">
     <div class="project-card__header">
-      <h3 class="project-card__title">{{ $project.name }}</h3>
+      <h3 class="project-card__title">{{ $projectTitle }}</h3>
       {{ with $project.link }}
         <a
           class="project-card__link"
           href="{{ . }}"
           target="_blank"
           rel="noopener"
-          aria-label="{{ $openLabel }} {{ $project.name }}">
+          aria-label="{{ $openLabel }} {{ $projectTitle }}">
           <span aria-hidden="true">↗</span>
         </a>
       {{ end }}
