@@ -7,6 +7,12 @@
   const WHEEL_STRONG_TRIGGER = 80;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const mobileSnapQuery = window.matchMedia("(pointer: coarse), (max-width: 768px)");
+  let installTimer = 0;
+
+  function shouldDisableSnap() {
+    return mobileSnapQuery.matches;
+  }
 
   function installHomeSnap() {
     if (window[STATE_KEY] && typeof window[STATE_KEY].destroy === "function") {
@@ -17,6 +23,12 @@
     const projects = document.querySelector('[data-home-panel="projects"]');
 
     if (!cover || !projects) {
+      document.documentElement.classList.remove("home-snap-ready", "home-snap-animating");
+      window[STATE_KEY] = null;
+      return;
+    }
+
+    if (shouldDisableSnap()) {
       document.documentElement.classList.remove("home-snap-ready", "home-snap-animating");
       window[STATE_KEY] = null;
       return;
@@ -285,7 +297,10 @@
   }
 
   function scheduleInstall() {
-    window.requestAnimationFrame(installHomeSnap);
+    window.clearTimeout(installTimer);
+    installTimer = window.setTimeout(function () {
+      window.requestAnimationFrame(installHomeSnap);
+    }, 80);
   }
 
   if (document.readyState === "loading") {
@@ -295,6 +310,12 @@
   }
 
   window.addEventListener("pageshow", scheduleInstall);
+  window.addEventListener("resize", scheduleInstall, { passive: true });
+  if (typeof mobileSnapQuery.addEventListener === "function") {
+    mobileSnapQuery.addEventListener("change", scheduleInstall);
+  } else if (typeof mobileSnapQuery.addListener === "function") {
+    mobileSnapQuery.addListener(scheduleInstall);
+  }
 
   document.addEventListener("click", function (event) {
     if (!event.target.closest("#appearance-switcher, #appearance-switcher-mobile")) return;
