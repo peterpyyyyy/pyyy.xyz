@@ -542,12 +542,27 @@ body:has(.home-hero) {
   --deck-card-height: 4.35rem;
   --deck-card-gap: 0.22rem;
   --deck-loop-distance: calc((var(--deck-card-height) + var(--deck-card-gap)) * 3);
+  --deck-fade-size: clamp(0.72rem, 13%, 1.2rem);
   position: relative;
   z-index: 1;
   grid-area: deck;
   display: block;
   min-height: 6.8rem;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 var(--deck-fade-size),
+    #000 calc(100% - var(--deck-fade-size)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    #000 var(--deck-fade-size),
+    #000 calc(100% - var(--deck-fade-size)),
+    transparent
+  );
   transition:
     opacity 460ms var(--portfolio-ease-out),
     transform 720ms var(--portfolio-stack-ease),

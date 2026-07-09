@@ -25,7 +25,6 @@
     - name: FRC8214 2026 Playoffs Robot
       desc: |
         👨🏻‍🔧 Led mechanical design and build
-        🏆 China playoffs champion
       image: img/projects/frc-8214-2026-playoffs.png
       tags: [FRC, Mechanical]
 - name: NICE

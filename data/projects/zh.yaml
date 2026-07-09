@@ -25,7 +25,6 @@
     - name: FRC8214 2026季后赛机器人
       desc: |
         👨🏻‍🔧 主导机械设计研发
-        🏆 中国区季后赛冠军
       image: img/projects/frc-8214-2026-playoffs.png
       tags: [FRC, 机械]
 - name: NICE
