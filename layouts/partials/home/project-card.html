@@ -1,0 +1,85 @@
+{{ $project := .project }}
+{{ $page := .page }}
+{{ $variant := .variant | default "" }}
+{{ $lang := $page.Site.Language.Lang }}
+{{ $openLabel := "Open" }}
+{{ if or (eq $lang "zh") (hasPrefix $lang "zh") }}{{ $openLabel = "打开" }}{{ end }}
+{{ $isLogo := $project.logo | default false }}
+{{ $logoClass := $project.logoClass | default "" }}
+
+<article class="project-card{{ if eq $variant "frc" }} project-card--frc{{ end }}">
+  {{ with $project.image }}
+    {{ $imgURL := . }}
+    {{ $img := "" }}
+    {{ if not (or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") (strings.HasPrefix . "/")) }}
+      {{ $img = resources.Get . }}
+    {{ end }}
+    {{ if and $img (and (not $isLogo) (ne $img.MediaType.SubType "svg")) }}
+      {{ $webpSmall := $img.Fit "520x360 webp q82" }}
+      {{ $webpLarge := $img.Fit "820x560 webp q84" }}
+      {{ $fallback := $img.Fit "820x560 q88" }}
+      <figure class="project-card__media{{ if $isLogo }} project-card__media--logo{{ end }}{{ with $logoClass }} project-card__media--{{ . }}{{ end }}">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="{{ $webpSmall.RelPermalink }} 520w, {{ $webpLarge.RelPermalink }} 820w"
+            sizes="(min-width: 768px) 260px, 100vw">
+          <img
+            class="project-card__image{{ with $logoClass }} project-card__image--{{ . }}{{ end }}"
+            src="{{ $fallback.RelPermalink }}"
+            width="{{ $fallback.Width }}"
+            height="{{ $fallback.Height }}"
+            alt="{{ $project.name }}"
+            loading="lazy"
+            decoding="async">
+        </picture>
+      </figure>
+    {{ else if $img }}
+      <figure class="project-card__media{{ if $isLogo }} project-card__media--logo{{ end }}{{ with $logoClass }} project-card__media--{{ . }}{{ end }}">
+        <img
+          class="project-card__image{{ with $logoClass }} project-card__image--{{ . }}{{ end }}"
+          src="{{ $img.RelPermalink }}"
+          alt="{{ $project.name }}"
+          loading="lazy"
+          decoding="async">
+      </figure>
+    {{ else }}
+      <figure class="project-card__media{{ if $isLogo }} project-card__media--logo{{ end }}{{ with $logoClass }} project-card__media--{{ . }}{{ end }}">
+        <img
+          class="project-card__image{{ with $logoClass }} project-card__image--{{ . }}{{ end }}"
+          src="{{ $imgURL | safeURL }}"
+          alt="{{ $project.name }}"
+          loading="lazy"
+          decoding="async">
+      </figure>
+    {{ end }}
+  {{ end }}
+
+  <div class="project-card__body">
+    <div class="project-card__header">
+      <h3 class="project-card__title">{{ $project.name }}</h3>
+      {{ with $project.link }}
+        <a
+          class="project-card__link"
+          href="{{ . }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="{{ $openLabel }} {{ $project.name }}">
+          <span aria-hidden="true">↗</span>
+        </a>
+      {{ end }}
+    </div>
+    {{ with $project.desc }}
+      <p class="project-card__desc">
+        {{ . | replaceRE "(\\r\\n|\\r|\\n)" "<br>" | safeHTML }}
+      </p>
+    {{ end }}
+    {{ with $project.tags }}
+      <div class="project-card__tags" aria-label="Tags">
+        {{ range . }}
+          <span class="project-card__tag">{{ . }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</article>

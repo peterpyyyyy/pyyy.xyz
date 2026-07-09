@@ -1,31 +1,76 @@
-- name: FRC8214 2025 Robot
+- type: stack
+  stackClass: frc-stack
+  eyebrow: FIRST Robotics Competition
+  expandLabel: Expand robotics seasons
+  name: FRC 8214 Cyber Unicorn
   desc: |
-    👨🏻‍🔧 Lead mechanical design & build
-    🏆 Playoffs champion (Sanya)
-  link: https://www.bilibili.com/video/BV18U8FzyEDc/?vd_source=aa1efb57a7a2cc7feb3c90c2e07384d9
-  #image: img/projects/8214_25.png
-  tags: [FRC, Mech]
+    👨🏻‍🔧 Mechanical design R&D lead
+    🏆 Two championships and two runner-up finishes
+  tags: [FRC, Mechanical, Robotics]
+  items:
+    - name: FRC8214 2025 Playoffs Robot
+      desc: |
+        👨🏻‍🔧 Led mechanical design and build
+        🏆 Sanya playoffs champion
+      link: https://www.bilibili.com/video/BV18U8FzyEDc/?vd_source=aa1efb57a7a2cc7feb3c90c2e07384d9
+      image: img/projects/frc-8214-2025-playoffs.jpg
+      tags: [FRC, Mechanical]
+    - name: FRC8214 2026 Regional Robot
+      desc: |
+        👨🏻‍🔧 Led mechanical design and build
+        🏆 Shanghai Regional champion
+      link: https://cad.onshape.com/documents/d57c825fc8b462ed5da46b76/w/3f7e07c671e6ad5b4736a748/e/dc21975864057bc5c5c14ba1
+      image: img/projects/frc-8214-2026-season.png
+      tags: [FRC, Mechanical]
+    - name: FRC8214 2026 Playoffs Robot
+      desc: |
+        👨🏻‍🔧 Led mechanical design and build
+        🏆 China playoffs champion
+      image: img/projects/frc-8214-2026-playoffs.png
+      tags: [FRC, Mechanical]
 - name: NICE
-  desc: 🤫🤫🤫
-  #link: https://github.com/yourname/tools
-  tags: [FRC, Product]
-- name: "FeatureScripts: NI Tube Convertor"
-  desc: Added metric support and swerve mode on top of Julia's script
-  link: https://cad.onshape.com/documents/f7b27dd411ba4731c0f6db7a/w/8d73d146e119ededb0c7ad55/e/fb97c9cd1aad52d824674cf4?renderMode=0&uiState=692d9f5193bce92ecb3239a0
+  desc: |
+    🏭 China's first FRC COTS manufacturer
+    🧪 FRC parts / prototyping / docs
+    📦 3,000+ product sales
+  link: https://docs.nicerobotics.hk
+  image: img/projects/nice-logo.svg
+  logo: true
+  logoClass: nice
+  tags: [FRC, Product, Robotics]
+- type: stack
+  stackClass: feature-stack
+  eyebrow: Onshape FeatureScripts
+  expandLabel: Expand representative features
+  name: 8214 FeatureScripts
+  desc: |
+    🧩 Built for high-frequency FRC CAD workflows
+    ⚙️ Tube, insert-hole, and naming automation
+  link: https://cad.onshape.com/documents/9af88879239818bc500d5bf2/w/674a6c8c37855e786fe4538a/e/1cc67faabc9b13cd5096709e
+  image: img/projects/onshape-logo.svg
+  logo: true
+  logoClass: onshape
   tags: [FRC, Onshape, FeatureScript]
-- name: "FeatureScripts: Cycloidal Driver Generator"
-  desc: One-click parametric cycloidal gear sketch with profiling
-  link: https://cad.onshape.com/documents/67445ac5dc80b7b3efd03478/w/58539aab3a3e7d8ba1646329/e/93cfbee11a5ef8c60dd6aa9f?renderMode=0&uiState=692da03d93bce92ecb3239b7
-  tags: [Onshape, FeatureScript]
+  items:
+    - name: NI Heat Set Insert
+      desc: |
+        Heat-set insert hole generator
+        M3/M4/M5, thread compensation, automatic target body inference
+      tags: [3D Print, Assembly]
+    - name: Metric Tube Converter
+      desc: |
+        Tube shelling and hole-pattern automation
+        Supports keep-out regions, end alignment, and swerve module holes
+      tags: [Tube, Fabrication]
+    - name: FRC Ultimate Renamer
+      desc: |
+        Batch Part Name / Part Number / Material standardization
+        Detects plates, tubes, shafts, spacers, and printed part dimensions
+      tags: [BOM, Standards]
 - name: Bambu MakerWorld
-  desc: Original 3D-print models with 600+ downloads and 400+ prints
+  desc: 🧱 Original 3D-print models with 1.4k+ downloads and 1k+ prints
   link: https://makerworld.com.cn/zh/@pyyyy/upload
+  image: img/projects/makerworld-logo.png
+  logo: true
+  logoClass: makerworld
   tags: [3D Print, Design]
-- name: SRTP Research Project
-  desc: Lead research on digital twin simulation of machining error behavior
-  #link: /posts/
-  tags: [C#, Unity, Digital Twin]
-- name: My website!
-  desc: Co-built with ChatGPT
-  link: http://www.pyyy.xyz
-  tags: [HTML, ChatGPT]

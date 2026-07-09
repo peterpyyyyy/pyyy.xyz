@@ -1,6 +1,6 @@
 {{ define "main" }}
-  <section class="max-w-5xl mx-auto px-4 py-12">
-    <div class="text-center">
+  <section class="gallery-page max-w-5xl mx-auto px-4 py-12">
+    <div class="gallery-page__header text-center">
       <h1 class="text-4xl font-extrabold mb-3">{{ .Title }}</h1>
       {{ with .Params.description }}
         <p class="text-lg text-neutral-600 dark:text-neutral-300">{{ . }}</p>
@@ -8,26 +8,63 @@
     </div>
 
     {{ $photos := .Params.photos }}
-    <div class="mt-10 space-y-12">
+    <div class="gallery-grid mt-10">
       {{ range $photos }}
         {{ $src := .src }}
-        {{ if and (not (strings.HasPrefix $src "http://")) (not (strings.HasPrefix $src "https://")) }}
-          {{ $src = relURL $src }}
+        {{ $asset := "" }}
+        {{ if and (not (strings.HasPrefix $src "http://")) (not (strings.HasPrefix $src "https://")) (not (strings.HasPrefix $src "/")) }}
+          {{ $asset = resources.Get $src }}
         {{ end }}
-        <figure class="bg-neutral-50 dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-lg">
-          <div class="bg-neutral-200/40 dark:bg-neutral-800/60 overflow-hidden" style="aspect-ratio: 4 / 3;">
-            <img class="w-full h-full object-cover" src="{{ $src }}" alt="{{ .alt | default $.Title }}">
-          </div>
-          <figcaption class="p-5 text-center text-neutral-700 dark:text-neutral-200 text-sm">
-            {{ with .date }}
-              <div class="text-xs uppercase tracking-wide text-neutral-500 dark:text-neutral-400 mb-1">
-                {{ time . | time.Format "2006-01-02" }}
-              </div>
+        {{ if $asset }}
+          {{ $webpSmall := $asset.Fit "720x520 webp q82" }}
+          {{ $webpMedium := $asset.Fit "1180x860 webp q84" }}
+          {{ $webpLarge := $asset.Fit "1720x1240 webp q86" }}
+          {{ $fallback := $asset.Fit "1480x1080 jpg q88" }}
+          <figure class="gallery-card">
+            <div class="gallery-card__image-wrap" style="aspect-ratio: {{ $fallback.Width }} / {{ $fallback.Height }};">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="{{ $webpSmall.RelPermalink }} 720w, {{ $webpMedium.RelPermalink }} 1180w, {{ $webpLarge.RelPermalink }} 1720w"
+                  sizes="(min-width: 768px) 960px, calc(100vw - 2rem)">
+                <img
+                  class="gallery-card__image"
+                  src="{{ $fallback.RelPermalink }}"
+                  width="{{ $fallback.Width }}"
+                  height="{{ $fallback.Height }}"
+                  alt="{{ .alt | default $.Title }}"
+                  decoding="async">
+              </picture>
+            </div>
+            <figcaption class="gallery-card__caption">
+              {{ with .date }}
+                <div class="gallery-card__date">
+                  {{ time . | time.Format "2006-01-02" }}
+                </div>
+              {{ end }}
+              {{ with .title }}<div class="gallery-card__title">{{ . }}</div>{{ end }}
+              {{ with .caption }}<p>{{ . }}</p>{{ end }}
+            </figcaption>
+          </figure>
+        {{ else }}
+          {{ if and (not (strings.HasPrefix $src "http://")) (not (strings.HasPrefix $src "https://")) }}
+          {{ $src = relURL $src }}
             {{ end }}
-            {{ with .title }}<div class="text-base font-semibold mb-1">{{ . }}</div>{{ end }}
-            {{ with .caption }}<p>{{ . }}</p>{{ end }}
-          </figcaption>
-        </figure>
+          <figure class="gallery-card">
+            <div class="gallery-card__image-wrap">
+              <img class="gallery-card__image" src="{{ $src }}" alt="{{ .alt | default $.Title }}" decoding="async">
+            </div>
+            <figcaption class="gallery-card__caption">
+              {{ with .date }}
+                <div class="gallery-card__date">
+                  {{ time . | time.Format "2006-01-02" }}
+                </div>
+              {{ end }}
+              {{ with .title }}<div class="gallery-card__title">{{ . }}</div>{{ end }}
+              {{ with .caption }}<p>{{ . }}</p>{{ end }}
+            </figcaption>
+          </figure>
+        {{ end }}
       {{ else }}
         <p class="text-center text-neutral-600 dark:text-neutral-300 mt-10">还没有添加任何图片，稍后再来看吧。</p>
       {{ end }}

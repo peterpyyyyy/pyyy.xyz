@@ -1,6 +1,7 @@
 languageCode = "en"
 languageName = "English"
 weight = 2
+title = "pyyy.xyz"
 
 [params]
   displayName = "English"
@@ -16,6 +17,6 @@ weight = 2
   links = [
     { github = "https://github.com/peterpyyyyy" },
     { bilibili = "https://space.bilibili.com/357505609?spm_id_from=333.1007.0.0" },
-    { strava = "https://www.strava.com/athletes/your-id" },
+    { strava = "https://www.strava.com/athletes/178275168" },
     { email = "mailto:superpyyy@qq.com" }
   ]

@@ -1,8 +1,8 @@
-<section id="projects" class="my-10 scroll-mt-24">
+<section id="projects" class="home-projects scroll-mt-24" aria-labelledby="projects-title">
   {{ $lang := .Site.Language.Lang }}
   {{ $title := "Projects" }}
   {{ if or (eq $lang "zh") (hasPrefix $lang "zh") }}{{ $title = "项目" }}{{ end }}
-  <h2 class="text-2xl font-bold mb-4">{{ $title }}</h2>
+  <h2 id="projects-title" class="sr-only">{{ $title }}</h2>
   {{ $projectsData := index site.Data.projects $lang }}
   {{ if not $projectsData }}
     {{ $langShort := index (split $lang "-") 0 }}
@@ -11,54 +11,78 @@
   {{ if not $projectsData }}
     {{ $projectsData = site.Data.projects.zh }}
   {{ end }}
-  <div class="grid gap-4 md:grid-cols-2">
+  <div class="projects-grid">
     {{ range $project := $projectsData }}
-      <article class="p-4 rounded-xl border bg-white/60 dark:bg-neutral-900/60 flex flex-col gap-4 md:flex-row md:items-start">
-        {{ with $project.image }}
-          {{ $imgURL := . }}
-          {{ if not (or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") (strings.HasPrefix . "/")) }}
-            {{ with resources.Get . }}
-              {{ $imgURL = .RelPermalink }}
+      {{ if eq ($project.type | default "") "stack" }}
+        {{ $stackClass := $project.stackClass | default "frc-stack" }}
+        {{ $items := $project.items | default $project.projects }}
+        {{ $expandLabel := $project.expandLabel | default (cond (or (eq $lang "zh") (hasPrefix $lang "zh")) "展开项目" "Expand projects") }}
+        {{ $openLabel := "Open" }}
+        {{ if or (eq $lang "zh") (hasPrefix $lang "zh") }}{{ $openLabel = "打开" }}{{ end }}
+        <details class="frc-stack {{ $stackClass }}">
+          <summary class="frc-stack__summary{{ if not $project.image }} frc-stack__summary--no-mark{{ end }}" aria-label="{{ $expandLabel }}">
+            <span class="frc-stack__copy">
+              {{ with $project.eyebrow }}
+                <span class="frc-stack__eyebrow">{{ . }}</span>
+              {{ end }}
+              <span class="frc-stack__title">{{ $project.name }}</span>
+              {{ with $project.desc }}
+                <span class="frc-stack__desc">{{ . | replaceRE "(\\r\\n|\\r|\\n)" "<br>" | safeHTML }}</span>
+              {{ end }}
+              {{ with $project.tags }}
+                <span class="frc-stack__tags" aria-label="Tags">
+                  {{ range . }}
+                    <span class="project-card__tag">{{ . }}</span>
+                  {{ end }}
+                </span>
+              {{ end }}
+            </span>
+            {{ with $project.image }}
+              {{ $img := resources.Get . }}
+              {{ with $img }}
+                <span class="frc-stack__mark" aria-hidden="true">
+                  <img
+                    class="frc-stack__mark-image{{ with $project.logoClass }} frc-stack__mark-image--{{ . }}{{ end }}"
+                    src="{{ .RelPermalink }}"
+                    alt="">
+                </span>
+              {{ end }}
             {{ end }}
-          {{ end }}
-          {{ with $imgURL }}
-            <div class="flex-none order-1 md:order-2 w-52 h-36 md:w-60 md:h-44 self-start">
-              <div class="overflow-hidden rounded-lg border border-neutral-200/70 dark:border-neutral-800/70">
-                <img
-                  class="w-full h-full object-cover"
-                  src="{{ . | safeURL }}"
-                  alt="{{ $project.name }}"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </div>
-            </div>
-          {{ end }}
-        {{ end }}
-        <div class="flex-1 min-w-0 order-2 md:order-1">
-          <div class="flex items-center justify-between gap-3">
-            <h3 class="text-xl font-semibold">{{ $project.name }}</h3>
             {{ with $project.link }}
-              <a class="flex-none inline-flex h-10 w-10 items-center justify-center rounded-md bg-primary-100 text-primary-800 text-lg leading-none shadow-sm border border-primary-200 transition-colors hover:bg-primary-200 hover:border-primary-400 dark:bg-primary-900/40 dark:text-primary-100 dark:border-primary-800/60 dark:hover:bg-primary-800/70"
-                href="{{ . }}" target="_blank" rel="noopener" aria-label="打开 {{ $project.name }}">
-                &nbsp;↗&nbsp;
+              <a
+                class="frc-stack__link"
+                href="{{ . }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="{{ $openLabel }} {{ $project.name }}"
+                onclick="event.stopPropagation();">
+                <span aria-hidden="true">↗</span>
               </a>
             {{ end }}
-          </div>
-          {{ with $project.desc }}
-            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
-              {{ . | replaceRE "(\\r\\n|\\r|\\n)" "<br>" | safeHTML }}
-            </p>
-          {{ end }}
-          {{ with $project.tags }}
-            <div class="mt-2 flex flex-wrap gap-2">
-              {{ range . }}
-                <span class="text-xs px-2 py-1 rounded-full bg-primary-100 text-primary-900 dark:bg-neutral-800 dark:text-neutral-100">{{ . }}</span>
+            <span class="frc-stack__deck" aria-hidden="true">
+              {{ range $index, $item := first 3 $items }}
+                <span class="frc-stack__deck-card" style="--stack-index: {{ $index }};">
+                  <span class="frc-stack__deck-name">{{ $item.name }}</span>
+                  {{ with $item.tags }}
+                    <span class="frc-stack__deck-tags">
+                      {{ range first 2 . }}
+                        <span>{{ . }}</span>
+                      {{ end }}
+                    </span>
+                  {{ end }}
+                </span>
               {{ end }}
-            </div>
-          {{ end }}
-        </div>
-      </article>
+            </span>
+          </summary>
+          <div class="frc-stack__items">
+            {{ range $items }}
+              {{ partial "home/project-card.html" (dict "project" . "page" $ "variant" "frc") }}
+            {{ end }}
+          </div>
+        </details>
+      {{ else }}
+        {{ partial "home/project-card.html" (dict "project" $project "page" $) }}
+      {{ end }}
     {{ end }}
   </div>
 </section>

@@ -1,31 +1,76 @@
-- name: FRC8214 2025赛季机器人
+- type: stack
+  stackClass: frc-stack
+  eyebrow: FIRST Robotics Competition
+  expandLabel: 展开机器人赛季
+  name: FRC 8214 Cyber Unicorn
   desc: |
-    👨🏻‍🔧 主导机械设计研发
-    🏆 三亚季后赛冠军
-  link: https://www.bilibili.com/video/BV18U8FzyEDc/?vd_source=aa1efb57a7a2cc7feb3c90c2e07384d9
-  #image: img/projects/8214_25.png
-  tags: [FRC, 机械]
+    👨🏻‍🔧 机械设计研发负责人
+    🏆 两冠军两亚军
+  tags: [FRC, 机械, 机器人]
+  items:
+    - name: FRC8214 2025季后赛机器人
+      desc: |
+        👨🏻‍🔧 主导机械设计研发
+        🏆 三亚季后赛冠军
+      link: https://www.bilibili.com/video/BV18U8FzyEDc/?vd_source=aa1efb57a7a2cc7feb3c90c2e07384d9
+      image: img/projects/frc-8214-2025-playoffs.jpg
+      tags: [FRC, 机械]
+    - name: FRC8214 2026正赛机器人
+      desc: |
+        👨🏻‍🔧 主导机械设计研发
+        🏆 上海区域赛冠军
+      link: https://cad.onshape.com/documents/d57c825fc8b462ed5da46b76/w/3f7e07c671e6ad5b4736a748/e/dc21975864057bc5c5c14ba1
+      image: img/projects/frc-8214-2026-season.png
+      tags: [FRC, 机械]
+    - name: FRC8214 2026季后赛机器人
+      desc: |
+        👨🏻‍🔧 主导机械设计研发
+        🏆 中国区季后赛冠军
+      image: img/projects/frc-8214-2026-playoffs.png
+      tags: [FRC, 机械]
 - name: NICE
-  desc: 🤫🤫🤫
-  #link: https://github.com/yourname/tools
-  tags: [FRC, 产品]
-- name: "FeatureScripts: NI Tube Convertor"
-  desc: 在 Julia 的基础上添加了公制的支持，并支持了 swerve mode
-  link: https://cad.onshape.com/documents/f7b27dd411ba4731c0f6db7a/w/8d73d146e119ededb0c7ad55/e/fb97c9cd1aad52d824674cf4?renderMode=0&uiState=692d9f5193bce92ecb3239a0
+  desc: |
+    🏭 国内第一家 FRC COTS 厂家
+    🧪 FRC 零配件研发 / 打样测试 / 文档建设
+    📦 产品销量 3000+
+  link: https://docs.nicerobotics.hk
+  image: img/projects/nice-logo.svg
+  logo: true
+  logoClass: nice
+  tags: [FRC, 产品, 机器人]
+- type: stack
+  stackClass: feature-stack
+  eyebrow: Onshape FeatureScripts
+  expandLabel: 展开代表功能
+  name: 8214 FeatureScripts
+  desc: |
+    🧩 面向 FRC 高频 CAD 流程
+    ⚙️ 管材 / 铜螺母孔 / 命名规范自动化
+  link: https://cad.onshape.com/documents/9af88879239818bc500d5bf2/w/674a6c8c37855e786fe4538a/e/1cc67faabc9b13cd5096709e
+  image: img/projects/onshape-logo.svg
+  logo: true
+  logoClass: onshape
   tags: [FRC, Onshape, FeatureScript]
-- name: "FeatureScripts: Cycodial Driver generator"
-  desc: 一键生成参数化摆线轮草图，支持修型
-  link: https://cad.onshape.com/documents/67445ac5dc80b7b3efd03478/w/58539aab3a3e7d8ba1646329/e/93cfbee11a5ef8c60dd6aa9f?renderMode=0&uiState=692da03d93bce92ecb3239b7
-  tags: [Onshape, FeatureScript]
+  items:
+    - name: NI Heat Set Insert
+      desc: |
+        热熔铜螺母孔生成工具
+        M3/M4/M5、孔型补偿、自动目标实体推断
+      tags: [3D打印, 装配]
+    - name: Metric Tube Converter
+      desc: |
+        管材抽壳与孔阵列自动化
+        支持避让区域、端面对齐与 Swerve 模块孔
+      tags: [管材, 加工]
+    - name: FRC Ultimate Renamer
+      desc: |
+        批量 Part Name / Part Number / Material 规范化
+        自动识别板材、管材、轴、垫片与打印件尺寸
+      tags: [BOM, 规范]
 - name: 拓竹 MakerWorld
-  desc: 原创 3D 打印模型累计获得超过 600 次下载量、400 次打印量
+  desc: 🧱 原创 3D 打印模型累计获得 1.4k+ 下载量、1k+ 打印量
   link: https://makerworld.com.cn/zh/@pyyyy/upload
+  image: img/projects/makerworld-logo.png
+  logo: true
+  logoClass: makerworld
   tags: [3D打印, 设计]
-- name: SRTP 科研训练项目
-  desc: 主导项目《基于数字孪生技术模拟切削机床在切削过程中的误差行为》研究
-  #link: /posts/
-  tags: [C#, Unity, 数字孪生]
-- name: 我的网站！
-  desc: 携手 ChatGPT 荣誉呈现
-  link: http://www.pyyy.xyz
-  tags: [HTML, ChatGPT]

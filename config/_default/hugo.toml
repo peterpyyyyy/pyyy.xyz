@@ -1,5 +1,5 @@
 theme = "blowfish"
-baseURL = "https://pyyy.xyz/"
+baseURL = "https://www.pyyy.xyz/"
 defaultContentLanguage = "zh"
 [languages]
   [languages.zh]

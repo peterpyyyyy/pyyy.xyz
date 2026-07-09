@@ -1,7 +1,7 @@
 languageCode = "zh-cn"
 languageName = "简体中文"
 weight = 1
-#title = "pyyy.xyz"
+title = "pyyy.xyz"
 
 [params]
   displayName = "中文"
