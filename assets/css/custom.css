@@ -1,16 +1,29 @@
 /* Fill the safe-area around the fixed header so the blur spans behind the dynamic island/notch */
 .fixed.inset-x-0.z-100 {
   isolation: isolate;
+  min-height: calc(3rem + env(safe-area-inset-top));
   padding-top: env(safe-area-inset-top);
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
 
+.fixed.inset-x-0.z-100::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 0 calc(-1 * env(safe-area-inset-right)) 0 calc(-1 * env(safe-area-inset-left));
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(10, 18, 42, 0.99), rgba(12, 22, 48, 0.96)),
+    rgb(12, 22, 48);
+}
+
 .fixed.inset-x-0.z-100 > .relative {
-  z-index: 1;
+  z-index: 2;
 }
 
 .fixed.inset-x-0.z-100 #menu-blur {
+  z-index: 1;
   left: calc(-1 * env(safe-area-inset-left));
   right: calc(-1 * env(safe-area-inset-right));
   width: calc(100% + env(safe-area-inset-left) + env(safe-area-inset-right));
@@ -264,7 +277,24 @@ body:has(.home-hero) {
   padding: 0;
 }
 
+.project-card__media--logo .project-card__logo-svg {
+  display: block;
+  width: min(100%, 25rem);
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.project-card__media--logo .project-card__logo-svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .project-card__media--nice .project-card__image {
+  width: min(80%, 17.6rem);
+}
+
+.project-card__media--nice .project-card__logo-svg {
   width: min(80%, 17.6rem);
 }
 

@@ -35,6 +35,12 @@
             decoding="async">
         </picture>
       </figure>
+    {{ else if and $img (eq $img.MediaType.SubType "svg") }}
+      <figure class="project-card__media{{ if $isLogo }} project-card__media--logo{{ end }}{{ with $logoClass }} project-card__media--{{ . }}{{ end }}">
+        <span class="project-card__logo-svg{{ with $logoClass }} project-card__logo-svg--{{ . }}{{ end }}" role="img" aria-label="{{ $project.name }}">
+          {{ $img.Content | safeHTML }}
+        </span>
+      </figure>
     {{ else if $img }}
       <figure class="project-card__media{{ if $isLogo }} project-card__media--logo{{ end }}{{ with $logoClass }} project-card__media--{{ . }}{{ end }}">
         <img
