@@ -172,6 +172,8 @@ body:has(.home-hero) {
   margin-inline: auto;
   padding-inline: 1rem;
   scroll-margin-top: var(--home-anchor-offset);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .projects-grid {
