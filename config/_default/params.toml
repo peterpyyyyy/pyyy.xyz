@@ -1,5 +1,5 @@
 colorScheme = "Marvel"
-defaultAppearance = "light"
+defaultAppearance = "dark"
 autoSwitchAppearance = false
 copyright = "{ year } @pyyy"
 enableSearch = true
@@ -44,4 +44,4 @@ mainSections = ["posts"]
 [footer]
   showMenu = true
   showScrollToTop = true
-  showAppearanceSwitcher = true
+  showAppearanceSwitcher = false

@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="theme-color">
+  <meta name="color-scheme" content="dark">
+  <script>
+    (function () {
+      document.documentElement.classList.add("dark");
+      document.documentElement.style.colorScheme = "dark";
+      try {
+        localStorage.setItem("appearance", "dark");
+      } catch (error) {}
+    })();
+  </script>
 
   {{/* Title */}}
   {{ if .IsHome }}
