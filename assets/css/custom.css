@@ -359,7 +359,7 @@ body:has(.home-hero) {
 }
 
 .projects-grid > .project-card:not(.project-card--frc) .project-card__title {
-  font-size: clamp(1.22rem, 1.6vw, 1.52rem);
+  font-size: clamp(1.5rem, 2.05vw, 1.92rem);
   letter-spacing: -0.01em;
 }
 
@@ -409,8 +409,8 @@ body:has(.home-hero) {
 }
 
 .projects-grid > .project-card:not(.project-card--frc) .project-card__desc {
-  font-size: clamp(1rem, 1.15vw, 1.1rem);
-  line-height: 1.58;
+  font-size: clamp(1.12rem, 1.36vw, 1.26rem);
+  line-height: 1.54;
 }
 
 .project-card__tags,
@@ -1049,6 +1049,15 @@ body:has(.home-hero) {
 
   .project-card__title {
     font-size: 1.04rem;
+  }
+
+  .projects-grid > .project-card:not(.project-card--frc) .project-card__title {
+    font-size: clamp(1.42rem, 5.65vw, 1.58rem);
+  }
+
+  .projects-grid > .project-card:not(.project-card--frc) .project-card__desc {
+    font-size: clamp(1.1rem, 4.45vw, 1.18rem);
+    line-height: 1.5;
   }
 
   .frc-stack__summary {
