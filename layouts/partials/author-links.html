@@ -2,14 +2,15 @@
   <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
     {{ range $links := . }}
       {{ range $name, $url := $links }}
+        {{ $className := $name | urlize }}
         <a
-          class="mr-2 mb-2 inline-flex h-9 w-9 items-center justify-center rounded-md bg-neutral-100 text-neutral-600 shadow-sm hover:bg-primary-100 hover:text-primary-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-primary-900/40 dark:hover:text-primary-200 transition-colors"
+          class="author-link author-link--{{ $className }} mr-2 mb-2 inline-flex h-9 w-9 items-center justify-center rounded-md bg-neutral-100 text-neutral-600 shadow-sm hover:bg-primary-100 hover:text-primary-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-primary-900/40 dark:hover:text-primary-200 transition-colors"
           href="{{ $url | safeURL }}"
           target="_blank"
           aria-label="{{ $name | title }}"
           title="{{ $name | title }}"
           rel="me noopener noreferrer">
-          <span class="inline-block align-middle">{{ partial "icon.html" $name }}</span>
+          <span class="author-link__icon inline-flex items-center justify-center align-middle">{{ partial "icon.html" $name }}</span>
         </a>
       {{ end }}
     {{ end }}

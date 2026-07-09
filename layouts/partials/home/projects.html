@@ -29,13 +29,6 @@
               {{ with $project.desc }}
                 <span class="frc-stack__desc">{{ . | replaceRE "(\\r\\n|\\r|\\n)" "<br>" | safeHTML }}</span>
               {{ end }}
-              {{ with $project.tags }}
-                <span class="frc-stack__tags" aria-label="Tags">
-                  {{ range . }}
-                    <span class="project-card__tag">{{ . }}</span>
-                  {{ end }}
-                </span>
-              {{ end }}
             </span>
             {{ with $project.image }}
               {{ $img := resources.Get . }}
@@ -59,24 +52,25 @@
                 <span aria-hidden="true">↗</span>
               </a>
             {{ end }}
+            {{ $previewItems := first 3 $items }}
             <span class="frc-stack__deck" aria-hidden="true">
-              {{ range $index, $item := first 3 $items }}
-                <span class="frc-stack__deck-card" style="--stack-index: {{ $index }};">
-                  <span class="frc-stack__deck-name">{{ $item.name }}</span>
-                  {{ with $item.tags }}
-                    <span class="frc-stack__deck-tags">
-                      {{ range first 2 . }}
-                        <span>{{ . }}</span>
-                      {{ end }}
-                    </span>
-                  {{ end }}
-                </span>
-              {{ end }}
+              <span class="frc-stack__deck-track">
+                {{ range $index, $item := $previewItems }}
+                  <span class="frc-stack__deck-card" style="--stack-index: {{ $index }};">
+                    <span class="frc-stack__deck-name">{{ $item.name }}</span>
+                  </span>
+                {{ end }}
+                {{ range $index, $item := $previewItems }}
+                  <span class="frc-stack__deck-card frc-stack__deck-card--clone" style="--stack-index: {{ add $index 3 }};">
+                    <span class="frc-stack__deck-name">{{ $item.name }}</span>
+                  </span>
+                {{ end }}
+              </span>
             </span>
           </summary>
           <div class="frc-stack__items">
             {{ range $items }}
-              {{ partial "home/project-card.html" (dict "project" . "page" $ "variant" "frc") }}
+              {{ partial "home/project-card.html" (dict "project" . "page" $ "variant" "frc" "hideTags" true) }}
             {{ end }}
           </div>
         </details>

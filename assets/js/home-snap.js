@@ -74,12 +74,10 @@
       return window.scrollY > 2 && window.scrollY <= top + exitRange;
     }
 
-    function easeOutDamped(t) {
-      const decay = Math.exp(-5.2 * t);
-      const wave = Math.cos(8.5 * t) + 0.22 * Math.sin(8.5 * t);
-      const raw = 1 - decay * wave;
-      const end = 1 - Math.exp(-5.2) * (Math.cos(8.5) + 0.22 * Math.sin(8.5));
-      return raw / end;
+    function easeInOutQuadToTarget(t) {
+      return t < 0.5
+        ? 2 * t * t
+        : 1 - Math.pow(-2 * t + 2, 2) / 2;
     }
 
     function clearTimers() {
@@ -138,7 +136,7 @@
 
       function frame(now) {
         const progress = clamp((now - startTime) / duration, 0, 1);
-        window.scrollTo(0, start + distance * easeOutDamped(progress));
+        window.scrollTo(0, start + distance * easeInOutQuadToTarget(progress));
 
         if (progress < 1) {
           rafId = window.requestAnimationFrame(frame);

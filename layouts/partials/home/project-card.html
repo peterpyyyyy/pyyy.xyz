@@ -1,6 +1,7 @@
 {{ $project := .project }}
 {{ $page := .page }}
 {{ $variant := .variant | default "" }}
+{{ $hideTags := .hideTags | default false }}
 {{ $lang := $page.Site.Language.Lang }}
 {{ $openLabel := "Open" }}
 {{ if or (eq $lang "zh") (hasPrefix $lang "zh") }}{{ $openLabel = "打开" }}{{ end }}
@@ -74,12 +75,14 @@
         {{ . | replaceRE "(\\r\\n|\\r|\\n)" "<br>" | safeHTML }}
       </p>
     {{ end }}
-    {{ with $project.tags }}
+    {{ if not $hideTags }}
+      {{ with $project.tags }}
       <div class="project-card__tags" aria-label="Tags">
         {{ range . }}
           <span class="project-card__tag">{{ . }}</span>
         {{ end }}
       </div>
+      {{ end }}
     {{ end }}
   </div>
 </article>

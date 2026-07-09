@@ -13,7 +13,7 @@ title = "pyyy.xyz"
 [params.author]
   name = "pyyy"
   headline = """👨🏻‍🎓@<a href="https://www.cqu.edu.cn" target="_blank" rel="noopener">Chongqing University</a><br>👨🏻‍🔧@<a href="https://mp.weixin.qq.com/s/B3HUb56MBZ4KYMGRqH00rQ" target="_blank" rel="noopener">FRC Team 8214</a><br><a>Mechanical Engineering</a><br>📷🚴🤖✈️"""
-  image = "img/me.png"
+  image = "img/avatar-2026.jpeg"
   links = [
     { github = "https://github.com/peterpyyyyy" },
     { bilibili = "https://space.bilibili.com/357505609?spm_id_from=333.1007.0.0" },

@@ -33,7 +33,7 @@ mainSections = ["posts"]
 
 [Author]
   name = "pyyy"
-  image = "img/me.png"
+  image = "img/avatar-2026.jpeg"
   
 [list]
   showHero = false

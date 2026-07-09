@@ -14,7 +14,7 @@ title = "pyyy.xyz"
   name = "pyyy"
   headline = """👨🏻‍🎓@<a href="https://www.cqu.edu.cn" target="_blank" rel="noopener">重庆大学</a><br>👨🏻‍🔧@<a href="https://mp.weixin.qq.com/s/B3HUb56MBZ4KYMGRqH00rQ" target="_blank" rel="noopener">FRC8214</a><br><a>机械设计制造及其自动化</a><br>📷🚴🤖✈️"""
 
-  image = "img/me.png"
+  image = "img/avatar-2026.jpeg"
   links = [
     { github = "https://github.com/peterpyyyyy" },
     { bilibili = "https://space.bilibili.com/357505609?spm_id_from=333.1007.0.0"},
