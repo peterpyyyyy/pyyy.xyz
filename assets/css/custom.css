@@ -822,9 +822,6 @@ body:has(.home-hero) {
 .feature-stack .frc-stack__summary {
   grid-template-areas: "copy deck";
   grid-template-columns: minmax(0, 1fr) var(--project-side-column);
-  background:
-    linear-gradient(115deg, rgba(15, 35, 58, 0.92), rgba(17, 44, 72, 0.78)),
-    radial-gradient(circle at 18% 18%, rgba(34, 197, 94, 0.2), transparent 34%);
 }
 
 .feature-stack[open] .frc-stack__summary {
