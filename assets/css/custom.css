@@ -351,6 +351,11 @@ body:has(.home-hero) {
   overflow-wrap: anywhere;
 }
 
+.projects-grid > .project-card:not(.project-card--frc) .project-card__title {
+  font-size: clamp(1.22rem, 1.6vw, 1.52rem);
+  letter-spacing: -0.01em;
+}
+
 .project-card__link,
 .frc-stack__link {
   position: absolute;
@@ -394,6 +399,11 @@ body:has(.home-hero) {
   color: var(--portfolio-muted);
   font-size: 0.95rem;
   line-height: 1.62;
+}
+
+.projects-grid > .project-card:not(.project-card--frc) .project-card__desc {
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.58;
 }
 
 .project-card__tags,
