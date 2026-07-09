@@ -511,6 +511,40 @@ body:has(.home-hero) {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.frc-stack__expand-cue {
+  position: absolute;
+  z-index: 3;
+  bottom: 0.42rem;
+  left: 50%;
+  width: 1.24rem;
+  height: 0.78rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.82;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.36));
+  transition:
+    opacity 220ms var(--portfolio-ease-out),
+    transform 260ms var(--portfolio-ease-out);
+  animation: frc-expand-cue 1.7s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+}
+
+.frc-stack__expand-cue::before {
+  display: block;
+  width: 0.58rem;
+  height: 0.58rem;
+  margin: 0 auto;
+  border-right: 2px solid rgba(248, 250, 252, 0.9);
+  border-bottom: 2px solid rgba(248, 250, 252, 0.9);
+  transform: rotate(45deg);
+  content: "";
+}
+
+.frc-stack[open] .frc-stack__expand-cue {
+  opacity: 0;
+  transform: translate(-50%, -0.25rem);
+  animation: none;
+}
+
 .frc-stack__summary:focus-visible {
   outline: 3px solid rgba(215, 255, 67, 0.72);
   outline-offset: 3px;
@@ -927,6 +961,24 @@ body:has(.home-hero) {
   }
 }
 
+@keyframes frc-expand-cue {
+  0%,
+  100% {
+    transform: translate(-50%, -0.08rem);
+    opacity: 0.58;
+  }
+
+  42% {
+    transform: translate(-50%, 0.2rem);
+    opacity: 0.96;
+  }
+
+  64% {
+    transform: translate(-50%, 0.06rem);
+    opacity: 0.84;
+  }
+}
+
 @media (max-width: 900px) {
   .projects-grid,
   .frc-stack__items {
@@ -1065,6 +1117,10 @@ body:has(.home-hero) {
     padding: 0.72rem 0.72rem 1.45rem;
   }
 
+  .frc-stack__expand-cue {
+    bottom: 0.36rem;
+  }
+
   .frc-stack__title {
     font-size: 1.28rem;
   }
@@ -1144,6 +1200,7 @@ body:has(.home-hero) {
   .frc-stack__deck-track,
   .frc-stack__deck-card,
   .frc-stack__deck-name,
+  .frc-stack__expand-cue,
   .frc-stack__title,
   .frc-stack__desc,
   .frc-stack__toggle,
