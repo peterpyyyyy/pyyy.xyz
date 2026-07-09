@@ -1,6 +1,6 @@
 colorScheme = "Marvel"
 defaultAppearance = "light"
-autoSwitchAppearance = true
+autoSwitchAppearance = false
 copyright = "{ year } @pyyy"
 enableSearch = true
 enableCodeCopy = true

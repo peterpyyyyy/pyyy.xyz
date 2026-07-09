@@ -44,6 +44,10 @@
   --portfolio-shadow: 0 22px 70px rgba(0, 0, 0, 0.38);
 }
 
+body:has(.home-hero) {
+  background-color: rgb(16, 28, 77) !important;
+}
+
 .home-hero {
   --cover-lift: clamp(3.5rem, 10.5svh, 7rem);
   min-height: 100svh;
