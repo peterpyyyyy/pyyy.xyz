@@ -1,8 +1,17 @@
 <section id="projects" class="home-projects scroll-mt-24" aria-labelledby="projects-title">
   {{ $lang := .Site.Language.Lang }}
+  {{ $isZh := or (eq $lang "zh") (hasPrefix $lang "zh") }}
   {{ $title := "Projects" }}
-  {{ if or (eq $lang "zh") (hasPrefix $lang "zh") }}{{ $title = "项目" }}{{ end }}
-  <h2 id="projects-title" class="sr-only">{{ $title }}</h2>
+  {{ if $isZh }}{{ $title = "项目档案" }}{{ end }}
+  <header class="home-projects__header">
+    <div>
+      <p class="home-projects__eyebrow">02 / {{ if $isZh }}精选项目{{ else }}Selected work{{ end }}</p>
+      <h2 id="projects-title" class="home-projects__title">{{ $title }}</h2>
+    </div>
+    <p class="home-projects__intro">
+      {{ if $isZh }}从赛场机器人到工程工具：聚焦真实约束下的设计、迭代与交付。{{ else }}From competition robots to engineering tools—design, iteration, and delivery under real constraints.{{ end }}
+    </p>
+  </header>
   {{ $projectsData := index site.Data.projects $lang }}
   {{ if not $projectsData }}
     {{ $langShort := index (split $lang "-") 0 }}
@@ -41,37 +50,31 @@
                 </span>
               {{ end }}
             {{ end }}
-            {{ with $project.link }}
-              <a
-                class="frc-stack__link"
-                href="{{ . }}"
-                target="_blank"
-                rel="noopener"
-                aria-label="{{ $openLabel }} {{ $project.name }}"
-                onclick="event.stopPropagation();">
-                <span aria-hidden="true">↗</span>
-              </a>
-            {{ end }}
             {{ $previewItems := first 3 $items }}
             <span class="frc-stack__deck" aria-hidden="true">
-              <span class="frc-stack__deck-track">
-                {{ range $index, $item := $previewItems }}
-                  <span class="frc-stack__deck-card" style="--stack-index: {{ $index }};">
-                    <span class="frc-stack__deck-name">{{ $item.name }}</span>
-                  </span>
-                {{ end }}
-                {{ range $index, $item := $previewItems }}
-                  <span class="frc-stack__deck-card frc-stack__deck-card--clone" style="--stack-index: {{ add $index 3 }};">
-                    <span class="frc-stack__deck-name">{{ $item.name }}</span>
-                  </span>
-                {{ end }}
-              </span>
+              {{ range $index, $item := $previewItems }}
+                <span class="frc-stack__deck-card">
+                  <span class="frc-stack__deck-index">0{{ add $index 1 }}</span>
+                  <span class="frc-stack__deck-name">{{ $item.name }}</span>
+                </span>
+              {{ end }}
             </span>
-            <span class="frc-stack__expand-cue" aria-hidden="true"></span>
+            <span class="frc-stack__expand-cue" aria-hidden="true">
+              <span>{{ $expandLabel }}</span>
+              <span class="frc-stack__chevron">↓</span>
+            </span>
           </summary>
-          <div class="frc-stack__items">
-            {{ range $items }}
-              {{ partial "home/project-card.html" (dict "project" . "page" $ "variant" "frc" "hideTags" true) }}
+          <div class="frc-stack__panel">
+            <div class="frc-stack__items">
+              {{ range $items }}
+                {{ partial "home/project-card.html" (dict "project" . "page" $ "variant" "frc" "hideTags" true) }}
+              {{ end }}
+            </div>
+            {{ with $project.link }}
+              <a class="frc-stack__external" href="{{ . }}" target="_blank" rel="noopener">
+                <span>{{ $openLabel }} {{ $project.name }}</span>
+                <span aria-hidden="true">↗</span>
+              </a>
             {{ end }}
           </div>
         </details>

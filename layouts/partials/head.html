@@ -167,12 +167,6 @@
   {{ $jsResources = $jsResources | append (resources.Get "js/mobilemenu.js") }}
   {{ $jsResources = $jsResources | append (resources.Get "js/button-likes.js") }}
   {{ $jsResources = $jsResources | append (resources.Get "js/katex-render.js") }}
-  {{ with resources.Get "js/home-snap.js" }}
-    {{ $jsResources = $jsResources | append . }}
-  {{ end }}
-  {{ with resources.Get "js/project-stacks.js" }}
-    {{ $jsResources = $jsResources | append . }}
-  {{ end }}
   {{ if $jsResources }}
     {{ $bundleJS := $jsResources | resources.Concat "js/main.bundle.js" | resources.Minify | resources.Fingerprint $alg }}
     <script

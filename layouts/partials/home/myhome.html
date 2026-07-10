@@ -1,43 +1,72 @@
 {{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
-<section id="cover" class="home-hero max-w-5xl mx-auto flex flex-col items-center justify-center text-center py-12 px-4" data-home-panel="cover">
-  <div class="home-hero__stack">
-    {{ with .Site.Params.Author.image }}
-      {{ $authorImage := "" }}
-      {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
-        {{ $authorImage = resources.GetRemote . }}
-      {{ else }}
-        {{ $authorImage = resources.Get . }}
+{{ $isZh := or (eq .Site.Language.Lang "zh") (hasPrefix .Site.Language.Lang "zh") }}
+<section id="cover" class="home-hero" aria-labelledby="home-title">
+  <div class="home-hero__grid">
+    <div class="home-hero__copy">
+      <p class="home-hero__eyebrow">
+        {{ if $isZh }}机械设计 · 机器人 · 数字制造{{ else }}Mechanical design · Robotics · Digital fabrication{{ end }}
+      </p>
+      <h1 id="home-title" class="home-hero__title">
+        <span>{{ .Site.Params.Author.name | default .Site.Title }}</span>
+        <span class="home-hero__title-mark" aria-hidden="true">/</span>
+      </h1>
+      {{ with .Site.Params.Author.headline }}
+        <div class="home-hero__headline">
+          {{ . | markdownify }}
+        </div>
       {{ end }}
-      {{ if $authorImage }}
-        {{ $final := $authorImage }}
-        {{ if not $disableImageOptimization }}
-          {{ $final = $authorImage.Fill (print "288x288 q" ( $.Site.Params.Author.imagequality | default "96" )) }}
-        {{ end }}
-        <img
-          class="home-hero__avatar mb-4 h-36 w-36 rounded-full"
-          width="144"
-          height="144"
-          alt="{{ $.Site.Params.Author.name | default `Author` }}"
-          src="{{ $final.RelPermalink }}"
-          data-zoom-src="{{ $authorImage.RelPermalink }}">
+      <div class="home-hero__actions">
+        <a class="home-hero__project-link" href="#projects">
+          <span>{{ if $isZh }}查看项目{{ else }}View selected work{{ end }}</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <div class="home-hero__links" aria-label="{{ if $isZh }}社交链接{{ else }}Social links{{ end }}">
+          {{ partialCached "author-links.html" . }}
+        </div>
+      </div>
+      {{ with .Content }}
+        <section class="home-hero__content prose dark:prose-invert">{{ . }}</section>
       {{ end }}
-    {{ end }}
-    <h1 class="home-hero__title text-4xl font-extrabold">
-      {{ .Site.Params.Author.name | default .Site.Title }}
-    </h1>
-    {{ with .Site.Params.Author.headline }}
-      <h2 class="home-hero__headline mt-1 mb-2 text-xl text-neutral-600 dark:text-neutral-300">
-        {{ . | markdownify }}
-      </h2>
-    {{ end }}
-    <div class="home-hero__links mt-2 text-2xl">
-      {{ partialCached "author-links.html" . }}
     </div>
-    <section class="home-hero__content prose dark:prose-invert w-full mt-6">{{ .Content }}</section>
+
+    <div class="home-hero__visual" aria-hidden="true">
+      <span class="home-hero__axis home-hero__axis--x"></span>
+      <span class="home-hero__axis home-hero__axis--y"></span>
+      <span class="home-hero__orbit home-hero__orbit--outer"></span>
+      <span class="home-hero__orbit home-hero__orbit--inner"></span>
+      {{ with .Site.Params.Author.image }}
+        {{ $authorImage := "" }}
+        {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+          {{ $authorImage = resources.GetRemote . }}
+        {{ else }}
+          {{ $authorImage = resources.Get . }}
+        {{ end }}
+        {{ if $authorImage }}
+          {{ $final := $authorImage }}
+          {{ if not $disableImageOptimization }}
+            {{ $final = $authorImage.Fill (print "640x640 q" ( $.Site.Params.Author.imagequality | default "92" )) }}
+          {{ end }}
+          <div class="home-hero__portrait-wrap">
+            <img
+              class="home-hero__avatar"
+              width="320"
+              height="320"
+              alt=""
+              src="{{ $final.RelPermalink }}">
+          </div>
+        {{ end }}
+      {{ end }}
+      <span class="home-hero__coordinate home-hero__coordinate--top">X 8214</span>
+      <span class="home-hero__coordinate home-hero__coordinate--bottom">Y 2026</span>
+      <span class="home-hero__status">
+        <span class="home-hero__status-dot"></span>
+        {{ if $isZh }}持续设计与制造{{ else }}Designing &amp; building{{ end }}
+      </span>
+    </div>
   </div>
 </section>
 
-<section id="project-content" class="home-projects-wrap" data-home-panel="projects">
+<section id="project-content" class="home-projects-wrap">
   {{ partial "home/projects.html" . }}
 </section>
 
