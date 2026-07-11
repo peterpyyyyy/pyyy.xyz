@@ -220,14 +220,23 @@ summary:focus-visible {
 }
 
 .home-hero__links > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 0.45rem;
 }
 
 .home-hero__links .author-link {
+  position: relative;
+  display: inline-flex;
   width: 2.85rem;
   height: 2.85rem;
   min-height: 2.85rem;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
   margin: 0;
+  padding: 0;
   border: 1px solid var(--portfolio-border);
   border-radius: 999px;
   background: rgba(12, 25, 41, 0.76);
@@ -248,22 +257,42 @@ summary:focus-visible {
   padding-inline: 0.62rem;
 }
 
+.home-hero__links .author-link__icon,
+.home-hero__links .icon {
+  display: inline-flex;
+  width: 1.24rem;
+  height: 1.24rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
 .home-hero__links .author-link--bilibili .author-link__icon,
 .home-hero__links .icon--bilibili {
   width: 3.7rem;
+  height: 1.77rem;
 }
 
 .home-hero__links .icon svg {
   display: block;
-  width: 1.24rem;
-  height: 1.24rem;
+  width: 100%;
+  height: 100%;
+}
+
+.home-hero__links .icon--github svg path {
+  fill: currentColor;
 }
 
 .home-hero__links .icon__image {
   display: block;
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+}
+
+.home-hero__links .icon--strava {
+  transform: translateX(-0.06rem);
 }
 
 .home-hero__content {
